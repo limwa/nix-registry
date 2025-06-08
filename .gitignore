@@ -1,0 +1,5 @@
+# Ignore direnv cache directories
+.direnv/
+
+# Ignore flake.lock in templates
+templates/**/flake.lock
