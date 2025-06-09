@@ -58,7 +58,7 @@
         pkgs.mkShell rec {
           EMULATOR_NAME = "my_emulator";
 
-          packages = with pkgs; [
+          packages = [
             androidSdk
             jdk
             flutter
