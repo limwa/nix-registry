@@ -1,5 +1,5 @@
 {
-  description = "A basic flake for development with Nix and NixOS";
+  description = "A basic flake for Flutter development with Nix and NixOS";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

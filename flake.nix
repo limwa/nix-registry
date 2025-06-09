@@ -27,6 +27,14 @@
         basic = utils.lib.mkTemplate {
           path = ./templates/basic;
         };
+
+        flutter = utils.lib.mkTemplate {
+          path = ./templates/flutter;
+        };
+
+        nodejs = utils.lib.mkTemplate {
+          path = ./templates/nodejs;
+        };
       };
     };
 }
