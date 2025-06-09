@@ -1,0 +1,48 @@
+name: Flutter Template
+
+on:
+  push:
+    branches: [ main ]
+
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  flutter:
+    name: Build new project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            extra-experimental-features = nix-command flakes
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          path: nix-flake-registry
+      
+      - name: Instantiate template
+        run: |
+          nix flake new flutter_env --template ./nix-flake-registry#flutter
+          nix print-dev-env ./flutter_env > /tmp/rcfile
+
+      - name: Create flutter project
+        run: | 
+          source /tmp/rcfile
+          flutter create flutter_project
+
+      # - name: Build APK (Debug)
+      #   working-directory: flutter_project
+      #   run: |
+      #     source /tmp/rcfile
+      #     flutter build apk --debug
+
+      - name: Build project (Android App Bundle / Debug)
+        working-directory: flutter_project
+        run: |
+          source /tmp/rcfile
+          flutter build appbundle --debug

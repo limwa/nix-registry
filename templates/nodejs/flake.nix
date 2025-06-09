@@ -29,11 +29,6 @@
             nodejs_22
             corepack_22
           ];
-
-          shellHook = ''
-            echo "Your development environment is ready!"
-            echo "To edit this message, modify the shellHook in flake.nix"
-          '';
         };
     };
 }

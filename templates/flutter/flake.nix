@@ -2,7 +2,7 @@
   description = "A basic flake for Flutter development with Nix and NixOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=pull/412907/merge";
     utils.url = "github:limwa/nix-flake-utils";
 
     # Needed for shell.nix
@@ -25,15 +25,14 @@
         };
 
         androidComposition = pkgs.androidenv.composeAndroidPackages {
-          # platformVersions = [ "35" ];
-          # buildToolsVersions = [ "35.0.0" ];
-          # cmakeVersions = [ "3.22.1" ];
-
-          includeSystemImages = "if-supported";
           includeEmulator = "if-supported";
-
           includeNDK = "if-supported";
-          # ndkVersions = [ "25.1.8937393" ];
+          includeSystemImages = "if-supported";
+
+          buildToolsVersions = [ "34.0.0" ];
+          cmakeVersions = [ "3.22.1" ];
+          platformVersions = [ "35" ];
+          ndkVersions = [ "26.3.11579264" ];
         };
       in {
         inherit pkgs;
@@ -56,10 +55,14 @@
         pkgs.mkShell rec {
           EMULATOR_NAME = "my_emulator";
 
+          ANDROID_HOME = "${androidSdk}/libexec/android-sdk";
+          JAVA_HOME = "${jdk}";
+          LD_LIBRARY_PATH = with pkgs; lib.makeLibraryPath [libGL];
+
           packages = [
             androidSdk
-            jdk
             flutter
+            jdk
 
             (pkgs.writeShellApplication {
               name = "emulator-setup";
@@ -78,8 +81,6 @@
               '';
             })
 
-
-
             (pkgs.writeShellApplication {
               name = "emulator-launch";
 
@@ -88,16 +89,6 @@
               '';
             })
           ];
-
-          LD_LIBRARY_PATH = with pkgs; lib.makeLibraryPath [libGL];
-          ANDROID_HOME = "${androidSdk}/libexec/android-sdk";
-          ANDROID_NDK_ROOT = "${ANDROID_HOME}/ndk-bundle";
-          JAVA_HOME = "${jdk}";
-
-          shellHook = ''
-            echo "Your development environment is ready!"
-            echo "To edit this message, modify the shellHook in flake.nix"
-          '';
         };
     };
 }
