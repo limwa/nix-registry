@@ -14,7 +14,7 @@
     utils,
     ...
   }:
-    utils.lib.mkFlake {
+    utils.lib.mkFlakeWith {
       forEachSystem = system: {
         pkgs = import nixpkgs {
           inherit system;
