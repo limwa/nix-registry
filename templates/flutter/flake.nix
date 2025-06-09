@@ -77,6 +77,16 @@
                 avdmanager list avd
               '';
             })
+
+
+
+            (pkgs.writeShellApplication {
+              name = "emulator-launch";
+
+              text = ''
+                flutter emulators --launch "${EMULATOR_NAME}"
+              '';
+            })
           ];
 
           LD_LIBRARY_PATH = with pkgs; lib.makeLibraryPath [libGL];
