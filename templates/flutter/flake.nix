@@ -35,8 +35,6 @@
           includeNDK = "if-supported";
           # ndkVersions = [ "25.1.8937393" ];
         };
-
-
       in {
         inherit pkgs;
 
@@ -81,7 +79,7 @@
             })
           ];
 
-          LD_LIBRARY_PATH = with pkgs; lib.makeLibraryPath [ libGL];
+          LD_LIBRARY_PATH = with pkgs; lib.makeLibraryPath [libGL];
           ANDROID_HOME = "${androidSdk}/libexec/android-sdk";
           ANDROID_NDK_ROOT = "${ANDROID_HOME}/ndk-bundle";
           JAVA_HOME = "${jdk}";
