@@ -10,6 +10,7 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     utils,
     ...
@@ -22,6 +23,10 @@
       };
     } {
       formatter = {pkgs}: pkgs.alejandra;
+
+      packages = {pkgs}: {
+        checks-flutter-test-template-builds = pkgs.callPackage ./checks/flutter/test-template-builds.nix { inherit self; };
+      };
 
       templates = {
         basic = utils.lib.mkTemplate {
