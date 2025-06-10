@@ -23,6 +23,9 @@ To bootstrap your project with one of the templates provided by this flake, you 
 ```bash
 # e.g. for the flutter template
 nix flake init -t github:limwa/nix-flake-registry#flutter
+
+# OR
+nix flake new my_flutter_project -t github:limwa/nix-flake-registry#flutter
 ```
 
 A list of all of the templates provided by this flake can be obtained by running `nix flake show github:limwa/nix-flake-registry`.
