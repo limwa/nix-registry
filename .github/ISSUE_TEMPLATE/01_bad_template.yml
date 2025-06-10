@@ -20,7 +20,6 @@ body:
       description: |
         In what revision of the flake did the issue occur?
 
-        > [!TIP]
         > Run `nix eval github:limwa/nix-flake-registry#meta.revision` to get the current revision of the flake.
       placeholder: "e.g. e48b00e"
     validations:
