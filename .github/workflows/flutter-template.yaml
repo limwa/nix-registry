@@ -40,14 +40,32 @@ jobs:
           source /tmp/rcfile
           flutter create flutter_project
 
-      - name: Build APK (Debug)
+      - name: Build APK (Release)
         working-directory: flutter_project
         run: |
           source /tmp/rcfile
-          flutter build apk --debug
+          flutter build apk --release
 
-      - name: Build project (Android App Bundle / Debug)
+      - name: Build project (Android App Bundle / Release)
         working-directory: flutter_project
         run: |
           source /tmp/rcfile
-          flutter build appbundle --debug
+          flutter build appbundle --release
+
+      - name: Build project (Assets Bundle / Release)
+        working-directory: flutter_project
+        run: |
+          source /tmp/rcfile
+          flutter build bundle --release
+
+      - name: Build project (Linux / Release)
+        working-directory: flutter_project
+        run: |
+          source /tmp/rcfile
+          flutter build linux --release
+
+      - name: Build project (Web / Release)
+        working-directory: flutter_project
+        run: |
+          source /tmp/rcfile
+          flutter build web --release
