@@ -29,10 +29,10 @@
           includeNDK = "if-supported";
           includeSystemImages = "if-supported";
 
-          buildToolsVersions = [ "34.0.0" ];
-          cmakeVersions = [ "3.22.1" ];
-          platformVersions = [ "35" ];
-          ndkVersions = [ "26.3.11579264" ];
+          buildToolsVersions = ["34.0.0"];
+          cmakeVersions = ["3.22.1"];
+          platformVersions = ["35"];
+          ndkVersions = ["26.3.11579264"];
         };
       in {
         inherit pkgs;
