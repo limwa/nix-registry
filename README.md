@@ -6,11 +6,7 @@ This repository contains a flake which I use in my day-to-day development activi
 
 ## Usage
 
-To see what is provided by this flake, you can run
-
-```bash
-nix flake show github:limwa/nix-flake-registry
-```
+To see what is provided by this flake, you can run `nix flake show github:limwa/nix-flake-registry`.
 
 > [!TIP]
 > To avoid having to type `github:limwa/nix-flake-registry` every time you execute a command, you can add this flake to your system's flake registry.
@@ -29,8 +25,4 @@ To bootstrap your project with one of the templates provided by this flake, you 
 nix flake init -t github:limwa/nix-flake-registry#flutter
 ```
 
-A list of all of the templates provided by this flake can be obtained by running
-
-```bash
-nix flake show github:limwa/nix-flake-registry
-```
+A list of all of the templates provided by this flake can be obtained by running `nix flake show github:limwa/nix-flake-registry`.
