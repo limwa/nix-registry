@@ -1,0 +1,94 @@
+name: "Bad template"
+description: "Report a problem with a template provided by this flake."
+title: "Bad template: TEMPLATENAME"
+labels: ["0.kind: bad template"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Welcome! Please replace the **`Bad template: TEMPLATENAME`** template above with the correct template name (as used in the `nix flake init -t github:limwa/nix-flake-registry#<TEMPLATENAME>` command).
+
+        > [!TIP]
+        > For instance, if you were filing a bad template bug against the [`flutter`](https://github.com/limwa/nix-flake-registry/tree/main/templates/flutter) template, your title would be as follows:
+        > `Bad template: flutter`
+
+        ---
+  - type: input
+    id: "revision"
+    attributes:
+      label: "Flake revision"
+      description: |
+        In what revision of the flake did the issue occur?
+
+        > [!TIP]
+        > Run `nix eval github:limwa/nix-flake-registry#meta.revision` to get the current revision of the flake.
+      placeholder: "e.g. e48b00e"
+    validations:
+      required: true
+  - type: dropdown
+    id: "template"
+    attributes:
+      label: "Template name"
+      description: |
+        Which template did you use when you encountered the problem?
+        Please select the template from the list below.
+      options:
+        - "Please select a template"
+        - "Basic"
+        - "Flutter"
+        - "Node.js"
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: "how-to-reproduce"
+    attributes:
+      label: "Steps to reproduce"
+      description: |
+        Please include a step-by-step guide for reproducing the problem you encountered.
+        Consider writing in concise, numbered bullet points to ensure that developers can retrace your steps.
+    validations:
+      required: true
+  - type: "input"
+    id: "reproducible-example"
+    attributes:
+      label: "Reproducible example"
+      description: |
+        If possible, please provide a link to a repository with a minimal reproducible example that demonstrates the issue.
+      placeholder: "e.g. https://github.com/your/repo"
+    validations:
+      required: false
+  - type: "textarea"
+    id: "additional-context"
+    attributes:
+      label: "Additional context"
+      description: "Add any other context about the problem here."
+    validations:
+      required: false
+  - type: "textarea"
+    id: "metadata"
+    attributes:
+      label: "System metadata"
+      description: "Please run `nix-shell -p nix-info --run \"nix-info -m\"` on a terminal and paste the output of that command here."
+    validations:
+      required: true
+  - type: "markdown"
+    attributes:
+      value: |
+        # Thank you for helping improve this flake!
+
+        ---
+  - type: "textarea"
+    id: "prioritisation"
+    attributes:
+      label: "Is this issue important to you?"
+      description: |
+        **Please do not modify this text area!**
+
+        This template helps developers know which issues should be prioritised by allowing users to vote with a :+1: reaction.
+        This is not a guarantee that highly-requested issues will be fixed first, but it helps us to figure out what's important to users. Please react on other users' issues if you find them important.
+      value: |
+        Add a :+1: [reaction] to [issues you find important].
+
+        [reaction]: https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/
+        [issues you find important]: https://github.com/limwa/nix-flake-registry/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc

@@ -22,11 +22,11 @@
         };
       };
     } {
-      formatter = {pkgs}: pkgs.alejandra;
-
-      packages = {pkgs}: {
-        checks-flutter-test-template-builds = pkgs.callPackage ./checks/flutter/test-template-builds.nix { inherit self; };
+      meta = {
+        revision = self.shortRev or self.dirtyShortRev;
       };
+
+      formatter = {pkgs}: pkgs.alejandra;
 
       templates = {
         basic = utils.lib.mkTemplate {

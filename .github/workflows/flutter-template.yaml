@@ -40,11 +40,11 @@ jobs:
           source /tmp/rcfile
           flutter create flutter_project
 
-      # - name: Build APK (Debug)
-      #   working-directory: flutter_project
-      #   run: |
-      #     source /tmp/rcfile
-      #     flutter build apk --debug
+      - name: Build APK (Debug)
+        working-directory: flutter_project
+        run: |
+          source /tmp/rcfile
+          flutter build apk --debug
 
       - name: Build project (Android App Bundle / Debug)
         working-directory: flutter_project
