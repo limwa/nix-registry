@@ -1,0 +1,42 @@
+name: Flake
+
+on:
+  push:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  check:
+    name: Check flake structure
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            extra-experimental-features = nix-command flakes
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run flake check
+        run: nix flake check --all-systems
+
+  format:
+    name: Check formatting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            extra-experimental-features = nix-command flakes
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run formatter
+        run: nix fmt . -- --check
