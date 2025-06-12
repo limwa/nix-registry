@@ -37,6 +37,10 @@
           path = ./templates/flutter;
         };
 
+        java = utils.lib.mkTemplate {
+          path = ./templates/java;
+        };
+
         nodejs = utils.lib.mkTemplate {
           path = ./templates/nodejs;
         };
