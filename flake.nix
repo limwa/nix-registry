@@ -40,6 +40,10 @@
         nodejs = utils.lib.mkTemplate {
           path = ./templates/nodejs;
         };
+
+        rust = utils.lib.mkTemplate {
+          path = ./templates/rust;
+        };
       };
     };
 }
