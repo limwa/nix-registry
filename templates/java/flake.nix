@@ -35,6 +35,8 @@
 
           packages = [
             jdk
+            # pkgs.gradle
+            # pkgs.maven
           ];
         };
     };
