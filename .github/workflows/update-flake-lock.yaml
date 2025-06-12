@@ -1,0 +1,31 @@
+name: Update flake dependencies
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '43 6 * * 6' # At 06:43 UTC on Saturday.
+
+jobs:
+  create-pr:
+    name: Create Pull Request
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            extra-experimental-features = nix-command flakes
+
+      - name: Update flake.lock
+        id: update
+        uses: DeterminateSystems/update-flake-lock@main
+        with:
+          commit-msg: "build: update flake.lock"
+          pr-title: "build: update flake.lock"
+          pr-assignees: limwa
