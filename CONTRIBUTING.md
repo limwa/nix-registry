@@ -2,7 +2,7 @@
 
 Everyone is welcome to contribute to this repository.
 
-If you'd like to contribute, please take into consideration the [philosophy](/#phylosophy) of this repository. Accordingly, changes like using a different formatter are not welcome, unless they are very well justified.
+If you'd like to contribute, please take into consideration the [philosophy](/#philosophy) of this repository. Accordingly, changes like using a different formatter are not welcome, unless they are very well justified.
 
 Furthermore, changes updating the `flake.lock` file are not needed, as the flake has an action to automatically update it. Instead, review the PR for updating the `flake.lock` file or create an issue requesting that it be updated.
 
