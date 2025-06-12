@@ -3,6 +3,9 @@ name: Flutter Template
 on:
   push:
     branches: [ main ]
+    paths:
+      - '.github/workflows/flutter-template.yaml'
+      - 'templates/flutter/**'
 
   workflow_dispatch:
   schedule:
