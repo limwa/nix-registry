@@ -28,19 +28,19 @@
           overlays = [(import rust-overlay)];
         };
 
-        rust-toolchain = pkgs.rust-bin.stable.latest.complete;
+        rustToolchain = pkgs.rust-bin.stable.latest.complete;
       };
     } {
       formatter = {pkgs, ...}: pkgs.alejandra;
 
       devShell = {
         pkgs,
-        rust-toolchain,
+        rustToolchain,
         ...
       }:
         pkgs.mkShell {
           packages = [
-            rust-toolchain
+            rustToolchain
           ];
         };
     };
