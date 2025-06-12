@@ -38,6 +38,10 @@ A list of all of the templates provided by this flake can be obtained by running
 >
 > As such, if you want to see the latest changes, use the `--refresh` flag in your `nix` commands.
 
+## Contributing
+
+If you'd like to contribute to this repository, please read the [contributing guidelines](CONTRIBUTING.md).
+
 ## Philosophy
 
 All of the templates provided by this flake are meant to be opinionated and tailored towards my personal workflow. This is a design choice and I won't be changing it.
