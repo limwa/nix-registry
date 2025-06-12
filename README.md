@@ -2,6 +2,7 @@
 
 This repository contains a flake which I use in my day-to-day development activities. For now, it contains templates for bootstrapping new projects.
 
+[![Flake](https://github.com/limwa/nix-registry/actions/workflows/flake.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/flake.yaml)
 [![Flutter Template](https://github.com/limwa/nix-registry/actions/workflows/flutter-template.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/flutter-template.yaml)
 
 ## Usage
