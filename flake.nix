@@ -28,26 +28,6 @@
 
       formatter = {pkgs}: pkgs.alejandra;
 
-      templates = {
-        basic = utils.lib.mkTemplate {
-          path = ./templates/basic;
-        };
-
-        flutter = utils.lib.mkTemplate {
-          path = ./templates/flutter;
-        };
-
-        java = utils.lib.mkTemplate {
-          path = ./templates/java;
-        };
-
-        nodejs = utils.lib.mkTemplate {
-          path = ./templates/nodejs;
-        };
-
-        rust = utils.lib.mkTemplate {
-          path = ./templates/rust;
-        };
-      };
+      templates = utils.lib.mkTemplates ./templates;
     };
 }

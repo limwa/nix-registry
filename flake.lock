@@ -58,11 +58,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1749418134,
-        "narHash": "sha256-bYq/5g6d2nI0wjoXdO0WqFtptpXXgMCMDUb2w0OGVfc=",
+        "lastModified": 1749745012,
+        "narHash": "sha256-UUL0HvGViihyZJDzB/MTXW/Zpvq5rPOmarIPga+v2EU=",
         "owner": "limwa",
         "repo": "nix-flake-utils",
-        "rev": "0d018b9b12121086034561b9de2b9b0b24fa16b9",
+        "rev": "794677b5238e9a0ddedf6ab7be4fe4df13bd5667",
         "type": "github"
       },
       "original": {
