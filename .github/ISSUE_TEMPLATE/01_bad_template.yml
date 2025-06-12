@@ -6,10 +6,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        Welcome! Please replace the **`Bad template: TEMPLATENAME`** template above with the correct template name (as used in the `nix flake init -t github:limwa/nix-flake-registry#<TEMPLATENAME>` command).
+        Welcome! Please replace the **`Bad template: TEMPLATENAME`** template above with the correct template name (as used in the `nix flake init -t github:limwa/nix-registry#<TEMPLATENAME>` command).
 
         > [!TIP]
-        > For instance, if you were filing a bad template bug against the [`flutter`](https://github.com/limwa/nix-flake-registry/tree/main/templates/flutter) template, your title would be as follows:
+        > For instance, if you were filing a bad template bug against the [`flutter`](https://github.com/limwa/nix-registry/tree/main/templates/flutter) template, your title would be as follows:
         > `Bad template: flutter`
 
         ---
@@ -20,7 +20,7 @@ body:
       description: |
         In what revision of the flake did the issue occur?
 
-        > Run `nix eval github:limwa/nix-flake-registry#meta.revision` to get the current revision of the flake.
+        > Run `nix eval github:limwa/nix-registry#meta.revision` to get the current revision of the flake.
       placeholder: "e.g. e48b00e"
     validations:
       required: true
@@ -90,4 +90,4 @@ body:
         Add a :+1: [reaction] to [issues you find important].
 
         [reaction]: https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/
-        [issues you find important]: https://github.com/limwa/nix-flake-registry/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc
+        [issues you find important]: https://github.com/limwa/nix-registry/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc

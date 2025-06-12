@@ -28,11 +28,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          path: nix-flake-registry
+          path: nix-registry
       
       - name: Instantiate template
         run: |
-          nix flake new flutter_env --template ./nix-flake-registry#flutter
+          nix flake new flutter_env --template ./nix-registry#flutter
           nix print-dev-env ./flutter_env > /tmp/rcfile
 
       - name: Create flutter project
