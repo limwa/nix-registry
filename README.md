@@ -37,3 +37,10 @@ A list of all of the templates provided by this flake can be obtained by running
 > you might not see the latest changes.
 >
 > As such, if you want to see the latest changes, use the `--refresh` flag in your `nix` commands.
+
+## Philosophy
+
+All of the templates provided by this flake are meant to be opinionated and tailored towards my personal workflow. This is a design choice and I won't be changing it.
+
+In particular, all of them are made to work with [nix-direnv](https://github.com/nix-community/nix-direnv) and use [alejandra](https://github.com/kamadorueda/alejandra) for formatting.
+Furthermore, all of them use my [nix-flake-utils](https://github.com/limwa/nix-flake-utils) library, which was purpose-built to make it easier to extend the functionality of the templates without much friction.
