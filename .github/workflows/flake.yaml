@@ -8,7 +8,7 @@ on:
 
 jobs:
   check:
-    name: Check flake structure
+    name: Check structure
     runs-on: ubuntu-latest
 
     steps:
