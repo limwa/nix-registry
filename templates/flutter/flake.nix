@@ -23,7 +23,10 @@
             android_sdk.accept_license = true;
           };
         };
+      in {
+        inherit pkgs;
 
+        # Reuse the same Android SDK, JDK and Flutter versions across all derivations
         androidComposition = pkgs.androidenv.composeAndroidPackages {
           includeEmulator = "if-supported";
           includeNDK = "if-supported";
@@ -34,11 +37,7 @@
           platformVersions = ["35"];
           ndkVersions = ["26.3.11579264"];
         };
-      in {
-        inherit pkgs;
 
-        # Reuse the same Android SDK, JDK and Flutter versions across all derivations
-        androidSdk = androidComposition.androidsdk;
         flutter = pkgs.flutter332;
         jdk = pkgs.jdk17;
       };
@@ -47,20 +46,28 @@
 
       devShell = {
         pkgs,
-        androidSdk,
+        androidComposition,
         jdk,
         flutter,
         ...
       }:
         pkgs.mkShell rec {
-          EMULATOR_NAME = "my_emulator";
+          EMULATOR_NAME = "emulator-5554";
 
-          ANDROID_HOME = "${androidSdk}/libexec/android-sdk";
+          # Android environment variables
+          ANDROID_HOME = "${androidComposition.androidsdk}/libexec/android-sdk";
+          GRADLE_OPTS = let
+            buildToolsVersion = pkgs.lib.getVersion (builtins.elemAt androidComposition.build-tools 0);
+          in "-Dorg.gradle.project.android.aapt2FromMavenOverride=${ANDROID_HOME}/build-tools/${buildToolsVersion}/aapt2";
+
+          # Java environment variables
           JAVA_HOME = "${jdk}";
+
+          # Needed for graphics hardware acceleration in the emulator
           LD_LIBRARY_PATH = with pkgs; lib.makeLibraryPath [libGL];
 
           packages = [
-            androidSdk
+            androidComposition.androidsdk
             flutter
             jdk
 
