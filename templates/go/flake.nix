@@ -10,12 +10,15 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     utils,
     ...
   }:
     utils.lib.mkFlakeWith {
       forEachSystem = system: {
+        outputs = utils.lib.forSystem self system;
+
         pkgs = import nixpkgs {
           inherit system;
         };
@@ -23,11 +26,18 @@
     } {
       formatter = {pkgs, ...}: pkgs.alejandra;
 
-      devShell = {pkgs, ...}:
-        pkgs.mkShell {
-          packages = with pkgs; [
-            go
-          ];
-        };
+      devShells = utils.lib.invokeAttrs {
+        default = {outputs, ...}: outputs.devShells.go;
+
+        # Go development shell
+        go = {pkgs, ...}:
+          pkgs.mkShell {
+            meta.description = "A development shell with Go";
+
+            packages = with pkgs; [
+              go
+            ];
+          };
+      };
     };
 }

@@ -10,12 +10,15 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     utils,
     ...
   }:
     utils.lib.mkFlakeWith {
       forEachSystem = system: rec {
+        outputs = utils.lib.forSystem self system;
+
         pkgs = import nixpkgs {
           inherit system;
         };
@@ -25,15 +28,22 @@
     } {
       formatter = {pkgs, ...}: pkgs.alejandra;
 
-      devShell = {
-        pkgs,
-        python,
-        ...
-      }:
-        pkgs.mkShell {
-          packages = [
-            python
-          ];
-        };
+      devShells = utils.lib.invokeAttrs {
+        default = {outputs, ...}: outputs.devShells.python;
+
+        # Python development shell
+        python = {
+          pkgs,
+          python,
+          ...
+        }:
+          pkgs.mkShell {
+            meta.description = "A development shell with Python";
+
+            packages = [
+              python
+            ];
+          };
+      };
     };
 }

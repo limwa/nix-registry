@@ -16,6 +16,7 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     rust-overlay,
     utils,
@@ -23,6 +24,8 @@
   }:
     utils.lib.mkFlakeWith {
       forEachSystem = system: rec {
+        outputs = utils.lib.forSystem self system;
+
         pkgs = import nixpkgs {
           inherit system;
           overlays = [(import rust-overlay)];
@@ -33,15 +36,22 @@
     } {
       formatter = {pkgs, ...}: pkgs.alejandra;
 
-      devShell = {
-        pkgs,
-        rustToolchain,
-        ...
-      }:
-        pkgs.mkShell {
-          packages = [
-            rustToolchain
-          ];
-        };
+      devShells = utils.lib.invokeAttrs {
+        default = {outputs, ...}: outputs.devShells.rust;
+
+        # Rust development shell
+        rust = {
+          pkgs,
+          rustToolchain,
+          ...
+        }:
+          pkgs.mkShell {
+            meta.description = "A development shell with Rust";
+
+            packages = [
+              rustToolchain
+            ];
+          };
+      };
     };
 }

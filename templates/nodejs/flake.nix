@@ -10,12 +10,15 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     utils,
     ...
   }:
     utils.lib.mkFlakeWith {
       forEachSystem = system: {
+        outputs = utils.lib.forSystem self system;
+
         pkgs = import nixpkgs {
           inherit system;
         };
@@ -23,12 +26,19 @@
     } {
       formatter = {pkgs, ...}: pkgs.alejandra;
 
-      devShell = {pkgs, ...}:
-        pkgs.mkShell {
-          packages = with pkgs; [
-            nodejs_22
-            corepack_22
-          ];
-        };
+      devShells = utils.lib.invokeAttrs {
+        default = {outputs, ...}: outputs.devShells.nodejs;
+
+        # Node.js development shell
+        nodejs = {pkgs, ...}:
+          pkgs.mkShell {
+            meta.description = "A development shell with Node.js";
+
+            packages = with pkgs; [
+              nodejs_22
+              corepack_22
+            ];
+          };
+      };
     };
 }

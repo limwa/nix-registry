@@ -10,12 +10,15 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     utils,
     ...
   }:
     utils.lib.mkFlakeWith {
       forEachSystem = system: rec {
+        outputs = utils.lib.forSystem self system;
+
         pkgs = import nixpkgs {
           inherit system;
         };
@@ -25,19 +28,28 @@
     } {
       formatter = {pkgs, ...}: pkgs.alejandra;
 
-      devShell = {
-        pkgs,
-        jdk,
-        ...
-      }:
-        pkgs.mkShell {
-          JAVA_HOME = "${jdk}";
+      devShells = utils.lib.invokeAttrs {
+        default = {outputs, ...}: outputs.devShells.java;
 
-          packages = [
-            jdk
-            # pkgs.gradle
-            # pkgs.maven
-          ];
-        };
+        # Java development shell
+        java = {
+          pkgs,
+          jdk,
+          ...
+        }:
+          pkgs.mkShell {
+            meta.description = "A development shell with Java";
+
+            env = {
+              JAVA_HOME = "${jdk}";
+            };
+
+            packages = [
+              jdk
+              # pkgs.gradle
+              # pkgs.maven
+            ];
+          };
+      };
     };
 }
