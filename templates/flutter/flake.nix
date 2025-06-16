@@ -91,7 +91,7 @@
                   {
                     echo "hw.gpu.enabled=yes"
                     echo "hw.gpu.mode=host"
-                  } >> "~/.android/avd/${env.EMULATOR_NAME}.avd/config.ini"
+                  } >> "$HOME/.android/avd/${env.EMULATOR_NAME}.avd/config.ini"
 
                   avdmanager list avd
                 '';
