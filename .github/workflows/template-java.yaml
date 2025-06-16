@@ -1,0 +1,31 @@
+name: Java Template
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/template-java.yaml'
+      - 'templates/java/**'
+
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  check:
+    name: Check structure
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            extra-experimental-features = nix-command flakes
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run flake check
+        run: nix flake check --all-systems
+        working-directory: templates/java
