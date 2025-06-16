@@ -4,15 +4,16 @@ This repository contains a flake which I use in my day-to-day development activi
 
 [![Flake](https://github.com/limwa/nix-registry/actions/workflows/flake.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/flake.yaml)
 
-| Template | Status                                                                                                                                                                                        |
-| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Basic](https://github.com/limwa/nix-registry/tree/main/templates/basic)    | [![Basic Template](https://github.com/limwa/nix-registry/actions/workflows/template-basic.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/template-basic.yaml)       |
-| [Flutter](https://github.com/limwa/nix-registry/tree/main/templates/flutter)  | [![Flutter Template](https://github.com/limwa/nix-registry/actions/workflows/template-flutter.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/template-flutter.yaml) |
-| [Go](https://github.com/limwa/nix-registry/tree/main/templates/go)       | [![Go Template](https://github.com/limwa/nix-registry/actions/workflows/template-go.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/template-go.yaml)                |
-| [Java](https://github.com/limwa/nix-registry/tree/main/templates/java)     | [![Java Template](https://github.com/limwa/nix-registry/actions/workflows/template-java.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/template-java.yaml)          |
+| Template                                                                     | Status                                                                                                                                                                                        |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Basic](https://github.com/limwa/nix-registry/tree/main/templates/basic)     | [![Basic Template](https://github.com/limwa/nix-registry/actions/workflows/template-basic.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/template-basic.yaml)       |
+| [Deno](https://github.com/limwa/nix-registry/tree/main/templates/deno)       | [![Deno Template](https://github.com/limwa/nix-registry/actions/workflows/template-deno.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/template-deno.yaml)          |
+| [Flutter](https://github.com/limwa/nix-registry/tree/main/templates/flutter) | [![Flutter Template](https://github.com/limwa/nix-registry/actions/workflows/template-flutter.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/template-flutter.yaml) |
+| [Go](https://github.com/limwa/nix-registry/tree/main/templates/go)           | [![Go Template](https://github.com/limwa/nix-registry/actions/workflows/template-go.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/template-go.yaml)                |
+| [Java](https://github.com/limwa/nix-registry/tree/main/templates/java)       | [![Java Template](https://github.com/limwa/nix-registry/actions/workflows/template-java.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/template-java.yaml)          |
 | [Node.js](https://github.com/limwa/nix-registry/tree/main/templates/nodejs)  | [![Node.js Template](https://github.com/limwa/nix-registry/actions/workflows/template-nodejs.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/template-nodejs.yaml)   |
 | [Python](https://github.com/limwa/nix-registry/tree/main/templates/python)   | [![Python Template](https://github.com/limwa/nix-registry/actions/workflows/template-python.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/template-python.yaml)    |
-| [Rust](https://github.com/limwa/nix-registry/tree/main/templates/rust)     | [![Rust Template](https://github.com/limwa/nix-registry/actions/workflows/template-rust.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/template-rust.yaml)          |
+| [Rust](https://github.com/limwa/nix-registry/tree/main/templates/rust)       | [![Rust Template](https://github.com/limwa/nix-registry/actions/workflows/template-rust.yaml/badge.svg)](https://github.com/limwa/nix-registry/actions/workflows/template-rust.yaml)          |
 
 ## Usage
 
