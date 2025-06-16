@@ -1,4 +1,4 @@
-name: Node.js Template
+name: Deno Template
 
 on:
   push:
