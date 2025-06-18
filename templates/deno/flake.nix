@@ -2,7 +2,7 @@
   description = "A basic flake for Deno development with Nix and NixOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=pull/417619/merge";
     utils.url = "github:limwa/nix-flake-utils";
 
     # Needed for shell.nix
