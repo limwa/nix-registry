@@ -32,11 +32,11 @@
         # Node.js development shell
         nodejs = {pkgs, ...}:
           pkgs.mkShell {
-            meta.description = "A development shell with Node.js";
+            meta.description = "A development shell with Node.js v24";
 
             packages = with pkgs; [
-              nodejs_22
-              corepack_22
+              nodejs_24
+              corepack_24
             ];
           };
       };
