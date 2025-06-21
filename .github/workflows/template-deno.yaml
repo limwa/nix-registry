@@ -7,6 +7,12 @@ on:
       - '.github/workflows/template-deno.yaml'
       - 'templates/deno/**'
 
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/template-deno.yaml'
+      - 'templates/deno/**'
+
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'

@@ -7,6 +7,12 @@ on:
       - '.github/workflows/template-java.yaml'
       - 'templates/java/**'
 
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/template-java.yaml'
+      - 'templates/java/**'
+
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'

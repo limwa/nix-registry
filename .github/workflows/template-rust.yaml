@@ -7,6 +7,12 @@ on:
       - '.github/workflows/template-rust.yaml'
       - 'templates/rust/**'
 
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/template-rust.yaml'
+      - 'templates/rust/**'
+
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'

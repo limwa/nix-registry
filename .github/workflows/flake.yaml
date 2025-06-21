@@ -8,6 +8,13 @@ on:
       - 'LICENSE'
       - '.github/ISSUE_TEMPLATE/**'
 
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - '.github/ISSUE_TEMPLATE/**'
+
   workflow_dispatch:
 
 jobs:

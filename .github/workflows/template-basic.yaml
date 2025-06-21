@@ -7,6 +7,12 @@ on:
       - '.github/workflows/template-basic.yaml'
       - 'templates/basic/**'
 
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/template-basic.yaml'
+      - 'templates/basic/**'
+
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
