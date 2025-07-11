@@ -15,7 +15,7 @@ on:
 
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '43 6 * * *'
 
 jobs:
   check:
