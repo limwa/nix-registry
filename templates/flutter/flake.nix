@@ -2,10 +2,7 @@
   description = "A basic flake for Flutter development with Nix and NixOS";
 
   inputs = {
-    # The latest staging-next cycle of Nixpkgs has introduced a lot of
-    # regressions, so use the revision of nixos-unstable before the
-    # problematic staging-next cycle was merged.
-    nixpkgs.url = "github:nixos/nixpkgs/9807714d6944a957c2e036f84b0ff8caf9930bc0";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     utils.url = "github:limwa/nix-flake-utils";
 
     # Needed for shell.nix
