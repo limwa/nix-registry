@@ -2,7 +2,7 @@
   description = "A basic flake for Flutter development with Nix and NixOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/pull/435027/merge";
     utils.url = "github:limwa/nix-flake-utils";
 
     # Needed for shell.nix
@@ -33,13 +33,13 @@
           includeNDK = "if-supported";
           includeSystemImages = "if-supported";
 
-          buildToolsVersions = ["34.0.0"];
+          buildToolsVersions = ["35.0.0"];
           cmakeVersions = ["3.22.1"];
-          platformVersions = ["35"];
-          ndkVersions = ["26.3.11579264"];
+          platformVersions = ["36"];
+          ndkVersions = ["27.0.12077973"];
         };
 
-        flutter = pkgs.flutter332;
+        flutter = pkgs.flutter335;
         jdk = pkgs.jdk17;
       };
     } {
@@ -85,7 +85,7 @@
 
                 text = ''
                   avdmanager delete avd -n "${env.EMULATOR_NAME}" 2>/dev/null || true
-                  avdmanager create avd -n "${env.EMULATOR_NAME}" -k "system-images;android-35;google_apis;x86_64" -d "pixel_9_pro_xl"
+                  avdmanager create avd -n "${env.EMULATOR_NAME}" -k "system-images;android-36;google_apis;x86_64" -d "pixel_9_pro_xl"
 
                   # Enable GPU acceleration
                   {
