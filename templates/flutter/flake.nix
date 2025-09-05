@@ -34,7 +34,7 @@
           includeSystemImages = "if-supported";
 
           buildToolsVersions = ["35.0.0"];
-          cmakeVersions = ["4.1.0"];
+          cmakeVersions = ["3.22.1"];
           platformVersions = ["36"];
           ndkVersions = ["27.0.12077973"];
         };
