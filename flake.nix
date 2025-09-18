@@ -29,5 +29,9 @@
       formatter = {pkgs}: pkgs.alejandra;
 
       templates = utils.lib.mkTemplates ./templates;
+
+      overlays = {
+        android = import ./overlays/android;
+      };
     };
 }
