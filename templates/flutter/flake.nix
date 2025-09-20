@@ -41,13 +41,13 @@
         androidComposition = pkgs.androidenv.composeAndroidPackages {
           includeNDK = "if-supported";
 
-          buildToolsVersions = ["34.0.0"];
+          buildToolsVersions = ["35.0.0"];
           cmakeVersions = ["3.22.1"];
-          platformVersions = ["35"];
-          ndkVersions = ["26.3.11579264"];
+          platformVersions = ["36"];
+          ndkVersions = ["27.0.12077973"];
         };
 
-        flutter = pkgs.flutter332;
+        flutter = pkgs.flutter335;
         jdk = pkgs.jdk17;
       };
     } {
