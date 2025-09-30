@@ -58,7 +58,7 @@ emulator: let
           "--unset ANDROID_USER_HOME"
           "--unset ANDROID_EMULATOR_HOME"
           "--unset ANDROID_AVD_HOME"
-          "--set ANDROID_EMULATOR_USE_SYSTEM_LIBS 0"
+          "--set ANDROID_EMULATOR_USE_SYSTEM_LIBS 1"
         ]
         ++ lib.optionals (useHardwareGraphics != false) [
           "--prefix LD_LIBRARY_PATH : \"${lib.makeLibraryPath [libGL]}\""
