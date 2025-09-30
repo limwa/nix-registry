@@ -24,7 +24,6 @@ emulator: let
       // (
         lib.optionalAttrs (useHardwareGraphics != false) {
           "hw.gpu.enabled" = "yes";
-          "hw.gpu.mode" = "host";
         }
       );
   });
