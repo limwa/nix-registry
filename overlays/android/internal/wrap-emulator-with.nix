@@ -6,17 +6,23 @@
   makeWrapper,
   libGL,
   vulkan-loader,
-}: {
+}:
+
+{
   meta ? {},
-  useHardwareGraphics ? true,
-}: emulator: let
+  useHardwareGraphics ? "opengl",
+}:
+
+assert useHardwareGraphics == false || useHardwareGraphics == "opengl" || useHardwareGraphics == "vulkan";
+
+emulator: let
   unwrapped = emulator.override (oldAttrs: {
     name = "${oldAttrs.name}-unwrapped";
 
     configOptions =
       (oldAttrs.configOptions or {})
       // (
-        lib.optionalAttrs useHardwareGraphics {
+        lib.optionalAttrs (useHardwareGraphics != false) {
           "hw.gpu.enabled" = "yes";
           "hw.gpu.mode" = "host";
         }
@@ -46,17 +52,23 @@
       ''
         mkdir -p $out/bin
         makeWrapper "${lib.getExe unwrapped}" "$out/bin/${wrapper.meta.mainProgram}" \
-          --unset ANDROID_HOME \
-          --unset ANDROID_USER_HOME \
-          --unset ANDROID_EMULATOR_HOME \
-          --unset ANDROID_AVD_HOME \
-          --set ANDROID_EMULATOR_USE_SYSTEM_LIBS 0
       ''
-      + lib.optionalString useHardwareGraphics ''
-        wrapProgram "$out/bin/${wrapper.meta.mainProgram}" \
-          --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [libGL]}" \
-          --set ANDROID_EMU_VK_LOADER_PATH "${vulkan-loader}/lib/libvulkan.so"
-      ''
+      + lib.concatStringsSep " " (
+        [
+          "--unset ANDROID_HOME"
+          "--unset ANDROID_USER_HOME"
+          "--unset ANDROID_EMULATOR_HOME"
+          "--unset ANDROID_AVD_HOME"
+          "--set ANDROID_EMULATOR_USE_SYSTEM_LIBS 0"
+        ]
+        ++ lib.optionals (useHardwareGraphics != false) [
+          "--prefix LD_LIBRARY_PATH : \"${lib.makeLibraryPath [libGL]}\""
+        ]
+        ++ lib.optionals (useHardwareGraphics == "vulkan") [
+          "--prefix LD_LIBRARY_PATH : \"${lib.makeLibraryPath [vulkan-loader]}\""
+          "--set ANDROID_EMU_VK_LOADER_PATH \"${vulkan-loader}/lib/libvulkan.so\""
+        ]
+      )
     );
 in
   wrapper
