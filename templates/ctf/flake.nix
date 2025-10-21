@@ -30,10 +30,10 @@
       formatter = {pkgs, ...}: pkgs.alejandra;
 
       devShells = utils.lib.invokeAttrs {
-        default = {outputs, ...}: outputs.devShells.ethical-hacking;
+        default = {outputs, ...}: outputs.devShells.ctf;
 
-        # Basic development shell
-        ethical-hacking = {pkgs, outputs, ...}:
+        # CTF shell
+        ctf = {pkgs, outputs, ...}:
           pkgs.mkShell {
             meta.description = "A shell with common CTF tools";
 
