@@ -33,7 +33,11 @@
         default = {outputs, ...}: outputs.devShells.ctf;
 
         # CTF shell
-        ctf = {pkgs, outputs, ...}:
+        ctf = {
+          pkgs,
+          outputs,
+          ...
+        }:
           pkgs.mkShell {
             meta.description = "A shell with common CTF tools";
 
@@ -61,29 +65,31 @@
       };
 
       packages = utils.lib.invokeAttrs {
-        cyberchef = {pkgs, ...}: pkgs.writeShellApplication {
-          name = "cyberchef";
+        cyberchef = {pkgs, ...}:
+          pkgs.writeShellApplication {
+            name = "cyberchef";
 
-          runtimeInputs = [
-            pkgs.xdg-utils
-          ];
+            runtimeInputs = [
+              pkgs.xdg-utils
+            ];
 
-          text = ''
-            xdg-open "https://cyberchef.io/" > /dev/null
-          '';
-        };
+            text = ''
+              xdg-open "https://cyberchef.io/" > /dev/null
+            '';
+          };
 
-        revshells = {pkgs, ...}: pkgs.writeShellApplication {
-          name = "revshells";
+        revshells = {pkgs, ...}:
+          pkgs.writeShellApplication {
+            name = "revshells";
 
-          runtimeInputs = [
-            pkgs.xdg-utils
-          ];
+            runtimeInputs = [
+              pkgs.xdg-utils
+            ];
 
-          text = ''
-            xdg-open "https://www.revshells.com/" > /dev/null
-          '';
-        };
+            text = ''
+              xdg-open "https://www.revshells.com/" > /dev/null
+            '';
+          };
       };
     };
 }
