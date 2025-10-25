@@ -1,5 +1,5 @@
 {
-  description = "A basic flake for Typst writting with Nix and NixOS";
+  description = "A basic flake for Typst writing with Nix and NixOS";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
