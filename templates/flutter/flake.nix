@@ -3,7 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    systems.url = "github:nix-systems/default/future-26.11";
+
     utils.url = "github:limwa/nix-flake-utils";
+    utils.inputs.systems.follows = "systems";
 
     # For hardware-accelerated Android emulator on NixOS
     limwa.url = "github:limwa/nix-registry";
